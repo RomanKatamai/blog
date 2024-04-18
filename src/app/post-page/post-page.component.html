@@ -1,0 +1,24 @@
+<div *ngIf="post$ | async as post; else loading">
+  <div class="post">
+    <button routerLink="/" class="btn btn-dark">Go Home-Page</button>
+    <div>
+      <img src="https://cm.magefan.com/magefan_blog/blog.png">
+    </div>
+    <div class="header">
+      <h1>{{ post.title }}</h1>
+    </div>
+    <div class="info">
+      <strong>Author: {{ post.author }}</strong>
+      <small>Date: {{ post.date | date:'medium' }}</small>
+    </div>
+
+    <div class="post-info">
+     <quill-view-html [content]="post.text"></quill-view-html>
+    </div>
+  </div>
+</div>
+
+<ng-template #loading>
+  <p class="text-center">Post is loading....</p>
+</ng-template>
+

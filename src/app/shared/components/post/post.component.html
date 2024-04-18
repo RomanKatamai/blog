@@ -1,0 +1,19 @@
+<div class="card">
+  <div>
+    <img src="https://cm.magefan.com/magefan_blog/blog.png">
+  </div>
+  <div class="card-header">
+    <h2>{{ post.title }}</h2>
+    <div class="creation-data">
+      <small>Author: {{ post.author }}</small>
+      <small>Date: {{ post.date | date:'dd.MM.yyyy'}}</small>
+    </div>
+  </div>
+  <div class="description">
+    <p>{{ post.description }}</p>
+  </div>
+  <button
+    [routerLink]="['/post', post.id]"
+    class="btn btn-dark"
+  >Read</button>
+</div>

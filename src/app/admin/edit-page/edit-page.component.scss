@@ -1,0 +1,15 @@
+form {
+  max-width: 650px;
+  border: #ccc 2px solid;
+  border-radius: 15px;
+  padding: 1rem;
+  margin: 0 auto;
+
+  input {
+    border-radius: 5px;
+  }
+
+  &-content {
+    margin-bottom: .5rem;
+  }
+}

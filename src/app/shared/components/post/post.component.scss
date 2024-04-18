@@ -1,0 +1,13 @@
+.description {
+  height: 70px;
+  p {
+    width: 100%;
+    line-height: 20px;
+  }
+}
+.creation-data {
+  margin-bottom: 5px;
+  small:not(:last-child) {
+    margin-right: 10px;
+  }
+}

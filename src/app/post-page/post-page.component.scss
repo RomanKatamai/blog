@@ -1,0 +1,33 @@
+.post {
+  max-width: 800px;
+  margin: 0 auto;
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  h1{
+    margin-bottom: .5rem;
+  }
+
+  .info{
+    margin-bottom: 15px;
+    strong{
+      margin-right: 1rem;
+    }
+  }
+}
+
+.post-info ::ng-deep .ql-editor {
+    padding: 0;
+}
+
+img {
+  border-radius: 0 16px 16px 16px;
+}
+
+.btn.btn-dark {
+  border-radius: 8px 8px 0 0;
+}

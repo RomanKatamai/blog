@@ -1,0 +1,66 @@
+.action {
+  border-radius: 5px;
+  margin: 0 auto;
+}
+
+button.action {
+  margin-right: 10px;
+}
+
+.search-field {
+  display: flex;
+  justify-content: right;
+
+  input {
+    max-width: 250px;
+    height: 30px;
+    border: 1px solid black;
+    border-radius: 10px;
+    font-size: 14px;
+  }
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th {
+  padding: 1rem;
+  text-align: left;
+}
+
+tbody th {
+  background-color: #f9fffb;
+}
+
+tbody tr {
+  border-top: 1px solid black;
+}
+
+table {
+  background: var(--light-color);
+}
+
+.table_block {
+  border: 1px solid #000;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.col-buttons {
+  width: 211px;
+}
+.col-title.col-author {
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.col-index {
+  width: 30px;
+}
+
+.col-date {
+  width: 230px;
+}
