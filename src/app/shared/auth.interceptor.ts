@@ -1,15 +1,16 @@
-import { Injectable } from "@angular/core";
-import { HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from "@angular/common/http";
-import { catchError, Observable, throwError } from "rxjs";
-import { AuthService } from "../admin/shared/services/auth.service";
-import { Router } from "@angular/router";
+import { Injectable } from '@angular/core';
+import { HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
+import { catchError, Observable, throwError } from 'rxjs';
+import { Router } from '@angular/router';
 
+import { AuthService } from '../admin/shared/services/auth.service';
 
 @Injectable({
   providedIn: "root"
 })
 
 export class AuthInterceptor implements HttpInterceptor {
+
   constructor(
     private auth: AuthService,
     private router: Router

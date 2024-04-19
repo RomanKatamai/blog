@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
-import { FormControl, FormGroup, Validators } from "@angular/forms";
-import { Post } from "../../shared/interfaces";
-import { PostsService } from "../../shared/posts.service";
-import { Router } from "@angular/router";
-import { AlertService } from "../shared/services/alert.service";
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+
+import { Post } from '../../shared/interfaces';
+import { PostsService } from '../../shared/posts.service';
+import { AlertService } from '../shared/services/alert.service';
 
 @Component({
   selector: 'app-create-page',
@@ -12,6 +13,7 @@ import { AlertService } from "../shared/services/alert.service";
 })
 export class CreatePageComponent {
   form!: FormGroup;
+  disabled = false;
 
   constructor(
     private postsService: PostsService,
@@ -31,6 +33,8 @@ export class CreatePageComponent {
       return
     }
 
+    this.disabled = true;
+
     const post: Post = {
       title: this.form.value.title,
       text: this.form.value.text,
@@ -43,6 +47,7 @@ export class CreatePageComponent {
       this.form.reset();
       this.router.navigate(['/admin', 'dashboard']);
       this.alert.success('The post has been created');
+      this.disabled = false;
     });
   };
 }

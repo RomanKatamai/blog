@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from "@angular/forms";
-import { User } from "../../shared/interfaces";
-import { AuthService } from "../shared/services/auth.service";
-import { ActivatedRoute, Params, Router } from "@angular/router";
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute, Params, Router } from '@angular/router';
+
+import { User } from '../../shared/interfaces';
+import { AuthService } from '../shared/services/auth.service';
 
 
 @Component({
@@ -15,6 +16,7 @@ export class LoginPageComponent implements OnInit {
   minLength = 6;
   submitted = false;
   message!: string;
+
   constructor(
     public auth: AuthService,
     private router: Router,
@@ -54,11 +56,14 @@ export class LoginPageComponent implements OnInit {
       password: this.form.value.password
     };
 
-    this.auth.login(user).subscribe(() => {
-      this.router.navigate(['/admin', 'dashboard']);
-      this.submitted = false;
-    }, error => {
-      this.submitted = false;
+    this.auth.login(user).subscribe( {
+      next: () => {
+        this.router.navigate(['/admin', 'dashboard']);
+        this.submitted = false;
+        },
+      error: () => {
+        this.submitted = false;
+      }
     });
   };
 }

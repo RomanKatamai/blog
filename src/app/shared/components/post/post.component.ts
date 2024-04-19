@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { PostsService } from "../../posts.service";
+
 import { Post } from "../../interfaces";
 
 @Component({
@@ -9,5 +9,4 @@ import { Post } from "../../interfaces";
 })
 export class PostComponent {
   @Input() post!: Post;
-  constructor(private postsService: PostsService) {};
 }

@@ -1,10 +1,11 @@
 import { Component, OnDestroy } from '@angular/core';
-import { PostsService } from "../../shared/posts.service";
-import { ActivatedRoute, Params, Router } from "@angular/router";
-import { FormControl, FormGroup, Validators } from "@angular/forms";
-import { Subscription, switchMap } from "rxjs";
-import { Post } from "../../shared/interfaces";
-import { AlertService } from "../shared/services/alert.service";
+import { ActivatedRoute, Params, Router } from '@angular/router';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Subject, switchMap, takeUntil } from 'rxjs';
+
+import { Post } from '../../shared/interfaces';
+import { AlertService } from '../shared/services/alert.service';
+import { PostsService } from '../../shared/posts.service';
 
 @Component({
   selector: 'app-edit-page',
@@ -14,8 +15,9 @@ import { AlertService } from "../shared/services/alert.service";
 export class EditPageComponent implements OnDestroy {
   form!: FormGroup;
   post!: Post;
+  destroy$: Subject<boolean> = new Subject<boolean>();
   submitted = false;
-  uSub!: Subscription;
+
   constructor(
     private postsService: PostsService,
     private route: ActivatedRoute,
@@ -37,10 +39,9 @@ export class EditPageComponent implements OnDestroy {
   };
 
   ngOnDestroy() {
-    if(this.uSub) {
-      this.uSub.unsubscribe();
-    }
-  };
+    this.destroy$.next(true);
+    this.destroy$.unsubscribe();
+  }
 
   submit() {
     if(this.form.invalid){
@@ -49,12 +50,13 @@ export class EditPageComponent implements OnDestroy {
 
     this.submitted = true;
 
-    this.uSub = this.postsService.update({
+    this.postsService.update({
       ...this.post,
       title: this.form.value.title,
       text: this.form.value.text,
       description: this.form.value.description
-    }).subscribe(() => {
+    }).pipe(takeUntil(this.destroy$))
+      .subscribe(() => {
       this.submitted = false
       this.router.navigate(['/admin', 'dashboard'])
       this.alert.success('The post has been changed')

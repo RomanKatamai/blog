@@ -1,7 +1,7 @@
-import { NgModule } from "@angular/core";
-import { HttpClientModule } from "@angular/common/http";
-import { CommonModule } from "@angular/common";
-import { QuillModule } from "ngx-quill";
+import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
+import { CommonModule } from '@angular/common';
+import { QuillModule } from 'ngx-quill';
 
 @NgModule({
   imports: [

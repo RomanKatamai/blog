@@ -1,8 +1,8 @@
-import { ActivatedRouteSnapshot, CanActivateFn, Router, RouterStateSnapshot } from "@angular/router";
-import { inject } from "@angular/core";
-import { AuthService } from "./auth.service";
-import { Observable } from "rxjs";
+import { ActivatedRouteSnapshot, CanActivateFn, Router, RouterStateSnapshot } from '@angular/router';
+import { inject } from '@angular/core';
+import { Observable } from 'rxjs';
 
+import { AuthService } from './auth.service';
 export const authGuard: CanActivateFn = (
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot,
@@ -11,7 +11,8 @@ export const authGuard: CanActivateFn = (
   const router = inject(Router);
   if(auth.isAuthenticated()) {
     return true;
-  } else {
+  }
+
     auth.logout();
 
     router.navigate(['/admin', 'login'], {
@@ -21,5 +22,4 @@ export const authGuard: CanActivateFn = (
     });
 
     return false;
-  }
 };

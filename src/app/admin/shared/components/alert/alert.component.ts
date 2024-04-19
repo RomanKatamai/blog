@@ -1,6 +1,8 @@
 import { Component, Input, OnDestroy } from '@angular/core';
-import { AlertService } from "../../services/alert.service";
-import { Subscription } from "rxjs";
+import { Subscription } from 'rxjs';
+
+import { AlertService } from '../../services/alert.service';
+
 
 @Component({
   selector: 'app-alert',
@@ -25,8 +27,6 @@ export class AlertComponent implements OnDestroy {
   };
 
   ngOnDestroy() {
-    if(this.aSub){
-      this.aSub.unsubscribe();
-    }
-  };
+    this.aSub && this.aSub.unsubscribe();
+  }
 }
